@@ -62,7 +62,7 @@ def generate_fingerprints_from_spectrogram(spectrogram: np.array, frequencies: n
         
         frame_fingerprints = []
         for lower, upper in settings.FREQUENCY_BUCKETS_FOR_FINGERPRINTS:
-            bucket_freqs_mags = [(freq, mag) for (freq, mag) in zip(frequencies, magnitudes) if lower <= freq <= upper]
+            bucket_freqs_mags = [(freq, mag) for (freq, mag) in zip(frequencies, magnitudes) if lower <= freq < upper]
             if len(bucket_freqs_mags) == 0: continue
             frame_fingerprints.append(sorted(bucket_freqs_mags, key=lambda x: x[1], reverse=True)[0][0])
         frame_fingerprint = "".join([str(int(f)) for f in frame_fingerprints])
