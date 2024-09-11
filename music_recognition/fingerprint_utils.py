@@ -18,7 +18,6 @@ def generate_spectrogram(sample_rate_hz: int, audio_data: np.ndarray, window_siz
     """
     # Calculate the number of frames and initialize the spectrogram matrix
     num_frames = 1 + (len(audio_data) - window_size) // hop_size
-    print(f'{window_size // 2 + 1} {num_frames=}')
 
     # Each column corresponds to the magnitudes from one frame. Each row corresponds to the magnitudes at one frequency
     spectrogram = np.zeros((window_size // 2 + 1, num_frames), dtype=np.float32)
@@ -53,7 +52,6 @@ def generate_fingerprints_from_spectrogram(spectrogram: np.array, frequencies: n
     # Transpose the spectrogram
     spectrogram = spectrogram.T
     num_frames, frame_width = spectrogram.shape
-    print(f'{num_frames=}, {frame_width=}')
     fingerprints = []
 
     for frame_index in range(num_frames):
@@ -67,8 +65,8 @@ def generate_fingerprints_from_spectrogram(spectrogram: np.array, frequencies: n
             frame_fingerprints.append(sorted(bucket_freqs_mags, key=lambda x: x[1], reverse=True)[0][0])
         frame_fingerprint = "".join([str(int(f)) for f in frame_fingerprints])
         fingerprints.append(frame_fingerprint)
-    
     return fingerprints
+
 
 def generate_fingerprints_for_audio(audio_path: str):
     sample_rate_hz, audio_data = scipy.io.wavfile.read(audio_path)

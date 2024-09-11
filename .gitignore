@@ -2,3 +2,7 @@
 *.wav
 *.csv
 *.txt
+
+venv/
+
+**/__pycache__/**
