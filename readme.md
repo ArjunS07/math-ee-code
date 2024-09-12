@@ -2,10 +2,10 @@
 
 This repository contains the code for my IB Math Extended Essay focused on the following research question: _"How can Fourier transforms be used to efficiently represent and accurately recognise audio signals?"_
 
-In my 42-page paper, I described the working and implementation of the Fourier Transform to generate frequency domain-based signatures of a database of discrete audio signals. I then used these signatures to rapidly identify arbitrary clips of audio from the database, achieving up to 96.875% accuracy on 10-second clips and 93%+ accuracy on 2.5-second clips.
+In my 42-page paper, I described the working and implementation of the Fourier Transform to generate frequency domain-based signatures of a database of discrete audio signals. I then used these signatures to rapidly identify arbitrary clips of audio from the database, achieving up to 96.87% accuracy on 10-second clips and 93.8% accuracy on 2.5-second clips.
 
 ![Table containing accuracy data](./audio_recognition/figs/table-accuracy.png)
-_Evaluation of recognition performance. 7x7 = 49 combinations of audio clip length and relative energy of random background noise ($h$) are tested. A maximum accuracy of 96.875% is achieved. For length > 0.5 seconds, random chance recognition 1.56% is outperformed for all $h < 7.5$._
+_Evaluation of recognition performance. 7x7 = 49 combinations of audio clip length and relative energy of random background noise (h) are tested. A maximum accuracy of 96.875% is achieved. For length > 0.5 seconds, random chance recognition 1.56% is outperformed for all h < 7.5._
 
 ![Comparison of accuracy for x](./audio_recognition/figs/accuracy-of-recogniser.png)
 _A plot of the results from the above table_
