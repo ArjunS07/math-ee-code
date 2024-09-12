@@ -82,7 +82,7 @@ if __name__ == "__main__":
         for row in database_reader:
             try:
                 name, audio_path = row
-                audio_path = f'music_recognition/{audio_path}'
+                audio_path = f'audio_recognition/{audio_path}'
                 fingerprints = generate_fingerprints_for_audio(audio_path=audio_path)
                 fingerprints = " ".join(fingerprints)
                 fingerprints_database.append((name, fingerprints))

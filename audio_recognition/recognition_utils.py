@@ -5,18 +5,6 @@ import random
 from fingerprint_utils import generate_spectrogram, generate_fingerprints_from_spectrogram
 import settings
 
-def add_random_noise(audio_data: np.array, volume_ratio: float) -> np.array:
-    """
-    Adds random gaussian noise to audio of length `length` at a random index
-    """
-    if volume_ratio == 0:
-        return audio_data
-    data = audio_data.astype(np.float64)
-    mean_noise_level = np.mean(np.abs(data))
-    print(f'Mean noise level: {mean_noise_level}')
-    noise = np.random.normal(0, volume_ratio * mean_noise_level, len(data))
-    data += noise
-    return data, noise
 
 # Find the most common value in the list of matching tracks
 def recognise_audio(target_audio_data: np.array, audio_database, sample_rate_hz = 44100) -> str:
@@ -47,3 +35,17 @@ def truncate_audio_to_seconds_length(audio_data: np.array, seconds: int, sample_
     start = random.randint(0, len(audio_data) - int(seconds * sample_rate_hz))
     end = start + int(seconds * sample_rate_hz)
     return audio_data[start:end]
+
+
+def add_random_noise(audio_data: np.array, volume_ratio: float) -> np.array:
+    """
+    Adds random gaussian noise to audio of `length` at a random index
+    """
+    if volume_ratio == 0:
+        return audio_data
+    data = audio_data.astype(np.float64)
+    mean_noise_level = np.mean(np.abs(data))
+    print(f'Mean noise level: {mean_noise_level}')
+    noise = np.random.normal(0, volume_ratio * mean_noise_level, len(data))
+    data += noise
+    return data, noise

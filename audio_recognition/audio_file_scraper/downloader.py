@@ -1,6 +1,6 @@
 import requests
 import os
-import music_recognition.settings as settings
+import audio_recognition.settings as settings
 
 # 1. Get an index of all the pages containing audio links
 ROOT_ARCHIVE_URL = "http://www.openmusicarchive.org/"
